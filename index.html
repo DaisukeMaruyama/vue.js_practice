@@ -10,6 +10,7 @@
   <div id="app">
     {{ number }}
     <button v-on:click="countUp">カウントアップ</button>
+    <button v-on:click="reset">リセット</button>
     <div v-if="number">条件次第で表示</div>
   </div>
   <script>
@@ -21,6 +22,9 @@
       methods: {
         countUp:function(){
           this.number += 1;
+        },
+        reset: function() {
+          this.number = 0;
         }
       },
     })
