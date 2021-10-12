@@ -28,6 +28,7 @@
     </ul>
     <div :class="color">カラー</div>
     <input type="text" v-model="color">
+    {{ custom_color }}
   </div>
   <script>
     new Vue({
@@ -45,6 +46,11 @@
           this.number = 0;
         }
       },
+      computed: {
+        custom_color: function(){
+          return this.color.toUpperCase();
+        }
+      }
     })
   </script>
 </body>
