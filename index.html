@@ -7,6 +7,17 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
+  <style>
+    .red {
+      color: red;
+    }
+    .green {
+      color: green;
+    }
+    .blue {
+      color: blue;
+    }
+  </style>
   <div id="app">
     {{ number }}
     <button @click="countUp">カウントアップ</button>
@@ -16,7 +27,7 @@
       <li v-for="item in items">{{ item }}</li>
     </ul>
     <div :class="color">カラー</div>
-
+    <input type="text" v-model="color">
   </div>
   <script>
     new Vue({
@@ -24,7 +35,7 @@
       data:{
         number:0,
         items:["カメ","サル","キジ"],
-        color:'red',
+        color: ' ',
       },
       methods: {
         countUp:function(){
