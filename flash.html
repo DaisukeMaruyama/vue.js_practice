@@ -6,10 +6,27 @@
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
+<style>
+
+	.flex {
+		display: flex;
+	}
+
+	.deleteButton {
+		height: 30px;
+		margin-left: 10px;
+		margin-top: 15px;
+	}
+
+</style>
 <body>
 
 <div id="app">
-    {{ message }}
+	<div class="flex">
+		<p v-show="flash">If you press the button, this message will be deleted.</p>
+		<button @click="deleteFlash" class="deleteButton" v-show="flash">Delete</button>
+	</div>
+  <p>{{ message }}</p>
 </div>
   
 </body>
@@ -18,7 +35,8 @@
  new Vue({
     el: '#app',
     data: { 
-          message:"Welcome, Please Wait...."
+          message:"Welcome, Please Wait....",
+					flash: true,
       },
       methods:{
         callFunction: function () {
@@ -26,7 +44,10 @@
             setTimeout(function () {
                 v.message = "Hi Bro, SetTimeout is working fine.";
             }, 3000);
-        }
+        },
+				deleteFlash: function() {
+					this.flash = false;
+				}
     },
     mounted () {
       this.callFunction()
