@@ -26,7 +26,10 @@
 		<p v-show="flash">If you press the button, this message will be deleted.</p>
 		<button @click="deleteFlash" class="deleteButton" v-show="flash">Delete</button>
 	</div>
-  <p>{{ message }}</p>
+	<p>{{ message }}</p>
+	<p>コメントを残してください。↓</p>
+	<input type="text" v-model="come">
+	<p>{{ comment }}</p>
 </div>
   
 </body>
@@ -36,6 +39,8 @@
     data: { 
           message:"Welcome, Please Wait....",
 					flash: true,
+					number: 0,
+					come: " ",
       },
       methods:{
         callFunction: function () {
@@ -50,6 +55,11 @@
     },
     mounted () {
       this.callFunction()
+    },
+		computed: {
+      comment: function(){
+        return this.come;
+      }
     }
 });
 </script>
