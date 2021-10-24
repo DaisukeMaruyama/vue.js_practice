@@ -14,6 +14,9 @@
 	.clickable {
 		pointer-events: none;
 	}
+	.reset {
+		pointer-events: none;
+	}
 </style>
 <script>
 
@@ -29,7 +32,7 @@
 			INPUT.value = num;
 			if (num <= 0) {
 				clearInterval(intervalId);
-				BUTTON.classList.remove('clickable');
+				RESET.classList.remove('reset');
 			}
 		}, 1000);
 	}
@@ -37,6 +40,8 @@
 	function reset() {
 		num = 5;
 		INPUT.value = 5;
+		RESET.classList.add('reset');
+		BUTTON.classList.remove('clickable');
 	}
 
 </script>
