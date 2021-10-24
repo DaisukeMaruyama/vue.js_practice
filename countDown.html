@@ -11,10 +11,16 @@
 </body>
 <script>
 	let INPUT = document.getElementById('input');
-	let num = 10;
+	let num = 5;
 
 	function countDown() {
-		
+		let intervalId = setInterval(() => {
+			num -=1;
+			INPUT.value = num;
+			if (num <= 0) {
+				clearInterval(intervalId);
+			}
+		}, 1000);
 	}
 </script>
 </html>
