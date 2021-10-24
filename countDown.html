@@ -7,22 +7,30 @@
 </head>
 <body>
 	<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
-	<button onclick="countDown()">スタート</button>
+	<button onclick="countDown()" class="" id="button">スタート</button>
 </body>
+<style>
+	.clickable {
+		pointer-events: none;
+	}
+</style>
 <script>
 
 	let INPUT = document.getElementById('input');
+	let BUTTON = document.getElementById('button');
 	let num = 5;
 
 	function countDown() {
 		let intervalId = setInterval(() => {
+			BUTTON.classList.add('clickable');
 			num -=1;
 			INPUT.value = num;
 			if (num <= 0) {
 				clearInterval(intervalId);
+				BUTTON.classList.remove('clickable');
 			}
 		}, 1000);
 	}
-	
+
 </script>
 </html>
