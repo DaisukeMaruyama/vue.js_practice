@@ -8,6 +8,7 @@
 <body>
 	<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
 	<button onclick="countDown()" class="" id="button">スタート</button>
+	<button onclick="stop()" class="" id="stop">ストップ</button>
 	<button onclick="reset()" class="" id="reset">リセット</button>
 </body>
 <style>
@@ -23,18 +24,26 @@
 	let INPUT = document.getElementById('input');
 	let BUTTON = document.getElementById('button');
 	let RESET = document.getElementById('reset');
+	let STOP = document.getElementById('stop');
+
+	//関数の外で空定義することで使い回しがきく
+	let intervalId;
 	let num = 5;
 
+	//stop()でnullを入れることで擬似的にストップウォッチを再現
 	function countDown() {
-		let intervalId = setInterval(() => {
-			BUTTON.classList.add('clickable');
-			num -=1;
-			INPUT.value = num;
-			if (num <= 0) {
-				clearInterval(intervalId);
-				RESET.classList.remove('reset');
-			}
-		}, 1000);
+		if (intervalId == null ) {
+			intervalId = setInterval(() => {
+				BUTTON.classList.add('clickable');
+				num -=1;
+				INPUT.value = num;
+				if (num <= 0) {
+					clearInterval(intervalId);
+					RESET.classList.remove('reset');
+					INPUT.value = ' ';
+				}
+			}, 1000);
+		}	
 	}
 
 	function reset() {
@@ -42,6 +51,12 @@
 		INPUT.value = 5;
 		RESET.classList.add('reset');
 		BUTTON.classList.remove('clickable');
+	}
+
+	function stop() {
+		clearInterval(intervalId);
+		BUTTON.classList.remove('clickable');
+		intervalId = null;
 	}
 
 </script>
