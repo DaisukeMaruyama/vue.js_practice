@@ -8,6 +8,7 @@
 <body>
 	<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
 	<button onclick="countDown()" class="" id="button">スタート</button>
+	<button onclick="reset()" class="" id="reset">リセット</button>
 </body>
 <style>
 	.clickable {
@@ -18,6 +19,7 @@
 
 	let INPUT = document.getElementById('input');
 	let BUTTON = document.getElementById('button');
+	let RESET = document.getElementById('reset');
 	let num = 5;
 
 	function countDown() {
@@ -30,6 +32,11 @@
 				BUTTON.classList.remove('clickable');
 			}
 		}, 1000);
+	}
+
+	function reset() {
+		num = 5;
+		INPUT.value = 5;
 	}
 
 </script>
