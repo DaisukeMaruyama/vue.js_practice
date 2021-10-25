@@ -5,11 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Countdown</title>
 </head>
-<body>
-	<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
-	<button onclick="countDown()" class="" id="button">スタート</button>
-	<button onclick="stop()" class="" id="stop">ストップ</button>
-	<button onclick="reset()" class="" id="reset">リセット</button>
+<body style="width: 100%;">
+	<div class="container">
+		<h4>ストップウォッチ</h4>
+		<div style="margin-bottom: 20px;">
+				<input style="padding: 4px; width: 50px; text-align: center;" value=""/>
+				<span></span>
+		</div>
+		<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
+		<button onclick="countDown()" class="" id="button">スタート</button>
+		<button onclick="stop()" class="" id="stop">ストップ</button>
+		<button onclick="reset()" class="" id="reset">リセット</button>
+	</div>
 </body>
 <style>
 	.clickable {
@@ -18,6 +25,15 @@
 	.reset {
 		pointer-events: none;
 	}
+	.container {
+		margin: 0 auto;
+		width: 300px;
+	}
+	input,
+	textarea,
+	select {
+			outline: none;
+	}
 </style>
 <script>
 
@@ -25,6 +41,8 @@
 	let BUTTON = document.getElementById('button');
 	let RESET = document.getElementById('reset');
 	let STOP = document.getElementById('stop');
+	let SETTIME = document.getElementById('');
+
 
 	//関数の外で空定義することで使い回しがきく
 	let intervalId;
