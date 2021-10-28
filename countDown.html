@@ -9,10 +9,13 @@
 	<div class="container">
 		<h4>ストップウォッチ</h4>
 		<div style="margin-bottom: 20px;">
-				<input id="setTime" style="padding: 4px; width: 50px; text-align: center;" value=""/>
+			<form name="setTime">
+				<input id="setTimeInput" style="padding: 4px; width: 50px; text-align: center;" value=""/>
 				<span>秒</span>
+				<button type="submit" onclick="setTimeButton()">設定</button>
+			</form>	
 		</div>
-		<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value="5"/>
+		<input readonly id="input" style="padding: 4px; width: 50px; text-align: center;" value=""/>
 		<button onclick="countDown()" class="" id="button">スタート</button>
 		<button onclick="stop()" class="" id="stop">ストップ</button>
 		<button onclick="reset()" class="" id="reset">リセット</button>
@@ -41,12 +44,12 @@
 	let BUTTON = document.getElementById('button');
 	let RESET = document.getElementById('reset');
 	let STOP = document.getElementById('stop');
-	let SETTIME = document.getElementById('setTime');
+	let SETTIMEINPUT = document.getElementById('setTimeInput');
 
 
 	//関数の外で空定義することで使い回しがきく
 	let intervalId;
-	let num = 5;
+	let num;
 
 	//stop()でnullを入れることで擬似的にストップウォッチを再現
 	function countDown() {
@@ -75,6 +78,12 @@
 		clearInterval(intervalId);
 		BUTTON.classList.remove('clickable');
 		intervalId = null;
+	}
+
+	//タイムセット
+	function setTimeButton() {
+		INPUT.value = SETTIME.value;
+		num = SETTIME.value;
 	}
 
 </script>
