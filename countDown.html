@@ -66,7 +66,8 @@
 			}, 1000);
 		}	
 	}
-
+  
+	//reset
 	function reset() {
 		num = 5;
 		INPUT.value = 5;
@@ -74,6 +75,7 @@
 		BUTTON.classList.remove('clickable');
 	}
 
+	//stop
 	function stop() {
 		clearInterval(intervalId);
 		BUTTON.classList.remove('clickable');
