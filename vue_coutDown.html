@@ -7,6 +7,47 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-	
+	<div class="container" id="app">
+		<h3>{{title}}</h3>
+
+		<input type="text" v-bind="time" class="time_input" ref="input" v-on:keyup.enter="setTime"/>
+		<button @click="setTime">Set the time!</button>
+
+		<div>
+			<input readonly :value="timer" class="time_input"/>
+			{{time}}
+		</div>
+	</div>	
 </body>
+<script>
+	const app = new Vue ({
+		el: "#app",
+		data() {
+			return {
+				title: "Vue.jsでのカウントダウン",
+				time: '',
+				timer: '',
+			}
+		},
+		methods: {
+			setTime() {
+				this.timer = this.$refs.input.value;
+				this.$refs.input.value = '';
+			},
+		},
+	})
+</script>
+<style>
+	.container {
+		width: 50%;
+		margin: 0 auto;
+	}
+	.time_input {
+		text-align: center;
+		outline: none;
+		width: 10%;
+		height: 10%;
+	}
+
+</style>
 </html>
